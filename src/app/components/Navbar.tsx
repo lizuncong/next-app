@@ -4,6 +4,7 @@ import { auth, signIn, signOut } from '@/auth';
 const Navbar = async () => {
   console.log('auth...', auth);
   const session = await auth();
+  console.log('session...,', session);
   return (
     <header className="px-5 py-3 bg-white shadow-sm">
       <nav className="flex justify-between items-center">
@@ -16,7 +17,25 @@ const Navbar = async () => {
               <Link href="/startup/create">
                 <span>Create</span>
               </Link>
-              <button onClick={signOut}>Logout</button>
+              <button
+                onClick={async () => {
+                  'use server';
+                  debugger;
+                  console.log('推出登陆...');
+
+                  await signOut();
+                }}
+              >
+                Logout
+              </button>
+              <form
+                action={async () => {
+                  'use server';
+                  await signOut({ redirectTo: '/' });
+                }}
+              >
+                <button type="submit">logout form</button>
+              </form>
               <Link href={`user/${session.id}`}>
                 <span>{session?.user?.name}</span>
               </Link>
