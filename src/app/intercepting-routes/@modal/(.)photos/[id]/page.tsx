@@ -1,0 +1,7 @@
+import { imgData } from '../../../page';
+import Container from './Container';
+export default async function page({ params }: { params: { id: string } }) {
+  const { id } = await params;
+  const photo = imgData.find(i => i.id === id)!;
+  return <Container photo={photo} />;
+}
