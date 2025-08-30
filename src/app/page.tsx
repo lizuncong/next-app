@@ -1,7 +1,5 @@
 const Homepage = () => {
-  return (
-    <div className=''>Homepage</div>
-  )
-}
+  return <div className="">hello next.js</div>;
+};
 
-export default Homepage
+export default Homepage;
