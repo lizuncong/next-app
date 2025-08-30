@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { imgData } from '../../page';
 import Image from 'next/image';
+import { imgData } from '../../data';
 
 export default async function page({
   params,

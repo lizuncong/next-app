@@ -1,34 +1,8 @@
 import Link from 'next/link';
-import img1 from './assets/1.jpg';
-import img2 from './assets/2.jpg';
-import img3 from './assets/3.jpeg';
-import Image, { StaticImageData } from 'next/image';
-export interface PhotoItemProp {
-  name: string;
-  id: string;
-  img: StaticImageData;
-  price: number;
-}
-export const imgData: PhotoItemProp[] = [
-  {
-    name: '张三',
-    id: '1',
-    img: img1,
-    price: 4,
-  },
-  {
-    name: '李四',
-    id: '2',
-    img: img2,
-    price: 19,
-  },
-  {
-    name: '王五',
-    id: '3',
-    img: img3,
-    price: 35,
-  },
-];
+
+import Image from 'next/image';
+import { imgData } from './data';
+
 export default function page() {
   return (
     <div>

@@ -1,4 +1,4 @@
-import { imgData } from '../../../page';
+import { imgData } from '../../../data';
 import Container from './Container';
 export default async function page({
   params,

@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { PhotoItemProp } from '../../../page';
+import { PhotoItemProp } from '../../../data';
 export default function Container({ photo }: { photo: PhotoItemProp }) {
   const router = useRouter();
   return (
