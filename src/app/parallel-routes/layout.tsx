@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Lama Dev Social Media App',
+  title: 'Follow lzc studying Next.js',
   description: 'Social media app built with Next.js',
 };
 
