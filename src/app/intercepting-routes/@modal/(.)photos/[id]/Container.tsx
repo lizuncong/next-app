@@ -1,7 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-export default function Container({ photo }: { photo: any }) {
+import { PhotoItemProp } from '../../../page';
+export default function Container({ photo }: { photo: PhotoItemProp }) {
   const router = useRouter();
   return (
     <div

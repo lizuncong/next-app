@@ -2,8 +2,14 @@ import Link from 'next/link';
 import img1 from './assets/1.jpg';
 import img2 from './assets/2.jpg';
 import img3 from './assets/3.jpeg';
-import Image from 'next/image';
-export const imgData = [
+import Image, { StaticImageData } from 'next/image';
+export interface PhotoItemProp {
+  name: string;
+  id: string;
+  img: StaticImageData;
+  price: number;
+}
+export const imgData: PhotoItemProp[] = [
   {
     name: '张三',
     id: '1',
