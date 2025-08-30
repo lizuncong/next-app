@@ -2,7 +2,11 @@ import { notFound } from 'next/navigation';
 import { imgData } from '../../page';
 import Image from 'next/image';
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const photo = imgData.find(item => item.id === id);
   if (!photo) {
