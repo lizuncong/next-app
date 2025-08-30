@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Follow lzc studying Next.js',
-  description: 'ok',
+  description: 'test',
 };
 
 export default function RootLayout({
