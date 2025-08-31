@@ -11,6 +11,9 @@ const Homepage = () => {
         <Link href="/intercepting-routes" className="text-blue-500">
           拦截路由 DEMO
         </Link>
+        <Link href="/route-handler" className="text-blue-500">
+          Route Handler DEMO
+        </Link>
       </div>
     </div>
   );
