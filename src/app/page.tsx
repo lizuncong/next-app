@@ -31,6 +31,21 @@ const Homepage = () => {
         <Link href="/route-handler" className="text-blue-500">
           Route Handler DEMO
         </Link>
+        <Link href="/middleware" className="text-blue-500">
+          Middleware DEMO
+        </Link>
+        <Link
+          href="https://www.builder.io/blog/why-react-server-components"
+          className="text-blue-500"
+        >
+          为什么使用服务端组件
+        </Link>
+        <Link
+          href="https://www.builder.io/blog/nextjs-react-server-components"
+          className="text-blue-500"
+        >
+          关于 React 服务器组件的 5 个误解
+        </Link>
       </div>
     </div>
   );

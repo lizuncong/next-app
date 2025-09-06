@@ -29,6 +29,7 @@ const Login: React.FC = () => {
     router.push('/');
     console.log('登录成功：', data);
   };
+  console.log('Login============');
   return (
     <div className="flex h-full flex-col items-center justify-center">
       <Form
