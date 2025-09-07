@@ -9,7 +9,7 @@ export default function NavigationEvents() {
   const router = useRouter();
   useEffect(() => {
     console.log('refres....', pathname, searchParams);
-    router.refresh();
+    // router.refresh(); // 会导致404的页面疯狂刷新
   }, [pathname, searchParams, router]);
 
   return null;
