@@ -3,8 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Lama Dev Social Media App',
-  description: 'Social media app built with Next.js',
+  title: 'Follow lzc studying Next.js',
+  description: '11',
 };
 
 export default function RootLayout({

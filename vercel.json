@@ -1,0 +1,8 @@
+{
+  "github": {
+    "enabled": true,
+    "silent": true,
+    "autoJobCancelation": true,
+    "ignored": ["(?!(production|main|master)$).*"]
+  }
+}

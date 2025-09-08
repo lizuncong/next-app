@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     // ppr: 'incremental',
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
 
 export default nextConfig;
