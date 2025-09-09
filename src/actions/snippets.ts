@@ -80,7 +80,6 @@ export const addSnippet2 = async (
         code,
       },
     });
-    redirect('/snippet-project');
   } catch (err) {
     if (err instanceof Error) {
       return {
@@ -91,4 +90,5 @@ export const addSnippet2 = async (
       message: 'something went wrong',
     };
   }
+  redirect('/snippet-project');
 };
