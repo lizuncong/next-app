@@ -1,22 +1,15 @@
+'use client';
+import { addSnippet } from '@/src/actions/snippets';
 import { db } from '@/src/db/index';
 import { redirect } from 'next/navigation';
-
-export default async function Page() {
-  const addSnippet = async (formData: FormData) => {
-    'use server';
-    const title = formData.get('title') as string;
-    const code = formData.get('code') as string;
-    const res = await db.snippet.create({
-      data: {
-        title,
-        code,
-      },
-    });
-    redirect('/snippet-project');
-    console.log('创建成功：', res);
-  };
+import { useFormState } from 'react-dom';
+const initState = {
+  message: '',
+};
+export default function Page() {
+  const [state, formAction] = useFormState(addSnippet, initState);
   return (
-    <form action={addSnippet}>
+    <form action={formAction}>
       <h3>添加Snippet</h3>
       <div className="mb-2 mt-3 flex items-center">
         <label htmlFor="title">Title</label>
@@ -36,6 +29,9 @@ export default async function Page() {
           id="code"
         />
       </div>
+      {state.message && (
+        <div className="my-4 text-red-500">{state.message}</div>
+      )}
       <button className="px-2 py-1 bg-blue-400" type="submit">
         添加
       </button>
