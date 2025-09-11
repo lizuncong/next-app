@@ -1,7 +1,5 @@
 'use client';
 import { addSnippet } from '@/src/actions/snippets';
-import { db } from '@/src/db/index';
-import { redirect } from 'next/navigation';
 import { useFormState } from 'react-dom';
 const initState = {
   message: '',

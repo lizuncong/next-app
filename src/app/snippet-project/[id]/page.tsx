@@ -1,7 +1,7 @@
 import { db } from '@/src/db/index';
 import { sleep } from '@/src/lib';
 import Link from 'next/link';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import DelButton from './DelButton';
 import { deleteSnippet } from '@/src/actions/snippets';
 export default async function Page(props: { params: Promise<{ id: string }> }) {

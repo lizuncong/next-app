@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import db from '@/src/db';
+import db from '@/src/lowdb';
 interface IParams {
   params: Promise<{ id: string }>;
 }
