@@ -1,3 +1,7 @@
+// 使用这两种方式虽然可以，但会强制每次都动态渲染，没有走缓存
+// export const revalidate = 0;
+// export const dynamic = 'force-dynamic';
+
 import { db } from '@/src/db/index';
 import Link from 'next/link';
 

@@ -2,11 +2,13 @@
 
 import { redirect } from 'next/navigation';
 import { db } from '../db/index';
+import { revalidatePath } from 'next/cache';
 
 export async function deleteSnippet(id: number) {
   await db.snippet.delete({
     where: { id },
   });
+  revalidatePath('/snippet-project');
   redirect('/snippet-project');
 }
 
@@ -15,6 +17,7 @@ export async function editSnippet(id: number, code: string) {
     where: { id },
     data: { code },
   });
+  revalidatePath(`/snippet-project/${id}`);
   redirect(`/snippet-project/${id}`);
 }
 
@@ -46,6 +49,7 @@ export const addSnippet = async (
       code,
     },
   });
+  revalidatePath('/snippet-project');
   redirect('/snippet-project');
 };
 

@@ -14,6 +14,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     return notFound();
   }
   const deleteSnippetWithId = deleteSnippet.bind(null, +id);
+  console.log('详情.......', id);
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
@@ -33,4 +34,14 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       </pre>
     </div>
   );
+}
+
+// SSG，提前生成页面缓存下来
+export async function generateStaticParams() {
+  const snippets = await db.snippet.findMany();
+  return snippets.map(snippet => {
+    return {
+      id: snippet.id.toString(),
+    };
+  });
 }
