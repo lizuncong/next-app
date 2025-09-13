@@ -4,7 +4,6 @@
 
 import { db } from '@/src/db/index';
 import Link from 'next/link';
-
 export default async function Page() {
   const snippets = await db.snippet.findMany();
   console.log('snippets...', snippets);

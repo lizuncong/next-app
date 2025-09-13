@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import React, { Suspense } from 'react';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import HeProvider from './HeProvider';
 
 import Link from 'next/link';
 import NavigationEvents from '../components/NavigationEvents';
@@ -24,10 +25,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} p-3 h-[100vh] overflow-auto bg-gray-100`}
       >
-        <AntdRegistry>{children}</AntdRegistry>
-        <Suspense fallback={null}>
-          <NavigationEvents />
-        </Suspense>
+        <HeProvider>
+          <AntdRegistry>{children}</AntdRegistry>
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
+        </HeProvider>
       </body>
     </html>
   );

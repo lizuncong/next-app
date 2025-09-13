@@ -1,6 +1,8 @@
 'use client';
 import { addSnippet } from '@/src/actions/snippets';
 import { useFormState } from 'react-dom';
+import { Button } from '@heroui/react';
+
 const initState = {
   message: '',
 };
@@ -30,9 +32,9 @@ export default function Page() {
       {state.message && (
         <div className="my-4 text-red-500">{state.message}</div>
       )}
-      <button className="px-2 py-1 bg-blue-400" type="submit">
+      <Button className="px-2 py-1 bg-blue-400" type="submit">
         添加
-      </button>
+      </Button>
     </form>
   );
 }
