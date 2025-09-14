@@ -1,12 +1,6 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
-import { Link } from '@heroui/link';
-import { Button } from '@heroui/button';
 import { Input } from '@heroui/input';
-import { auth } from '@/auth';
-import { Avatar } from '@heroui/avatar';
-import { Popover, PopoverTrigger, PopoverContent } from '@heroui/popover';
-import { signIn, signOut } from '@/src/actions/user';
-
+import HeaderAuth from '../../Client/HeaderAuth';
 export const AcmeLogo = () => {
   return (
     <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
@@ -21,7 +15,6 @@ export const AcmeLogo = () => {
 };
 
 export default async function Header() {
-  const session = await auth();
   return (
     <Navbar className="border-b-1 border-gray-200">
       <NavbarBrand>
@@ -34,28 +27,7 @@ export default async function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        {session?.user ? (
-          <Popover placement="bottom">
-            <PopoverTrigger>
-              <Avatar src={session.user.image} />
-            </PopoverTrigger>
-            <PopoverContent>
-              <form action={signOut}>
-                <Button type="submit">退出</Button>
-              </form>
-            </PopoverContent>
-          </Popover>
-        ) : (
-          <>
-            <NavbarItem>
-              <form action={signIn}>
-                <Button type="submit" color="primary" variant="flat">
-                  Sign In
-                </Button>
-              </form>
-            </NavbarItem>
-          </>
-        )}
+        <HeaderAuth />
       </NavbarContent>
     </Navbar>
   );

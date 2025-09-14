@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import HeProvider from './HeProvider';
-import SignOutButton from '../components/SignOut';
-import SignOutClient from '../components/SignOutClient';
-import Link from 'next/link';
-import NavigationEvents from '../components/NavigationEvents';
-import { auth } from '@/auth';
+
+// import NavigationEvents from '../components/NavigationEvents';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +19,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
   return (
     <html lang="en">
       <body
@@ -37,9 +33,9 @@ export default async function RootLayout({
           )} */}
 
           <AntdRegistry>{children}</AntdRegistry>
-          <Suspense fallback={null}>
+          {/* <Suspense fallback={null}>
             <NavigationEvents />
-          </Suspense>
+          </Suspense> */}
         </HeProvider>
       </body>
     </html>
