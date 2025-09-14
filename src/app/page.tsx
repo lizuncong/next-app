@@ -18,9 +18,9 @@ const Homepage = () => {
     <div className="flex flex-col">
       <div className="flex items-center justify-between">
         <span>首页</span>
-        <Button type="primary" onClick={handlerLogout}>
+        {/* <Button type="primary" onClick={handlerLogout}>
           退出登录
-        </Button>
+        </Button> */}
       </div>
       <div className="mt-6 flex flex-col gap-3">
         <Link href="/parallel-routes" className="text-blue-500">
