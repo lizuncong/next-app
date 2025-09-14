@@ -1,12 +1,11 @@
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-  Input,
-} from '@heroui/react';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
+import { Link } from '@heroui/link';
+import { Button } from '@heroui/button';
+import { Input } from '@heroui/input';
+import { auth } from '@/auth';
+import { Avatar } from '@heroui/avatar';
+import { Popover, PopoverTrigger, PopoverContent } from '@heroui/popover';
+import { signIn, signOut } from '@/src/actions/user';
 
 export const AcmeLogo = () => {
   return (
@@ -21,7 +20,8 @@ export const AcmeLogo = () => {
   );
 };
 
-export default function Header() {
+export default async function Header() {
+  const session = await auth();
   return (
     <Navbar className="border-b-1 border-gray-200">
       <NavbarBrand>
@@ -34,16 +34,28 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign In
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
+        {session?.user ? (
+          <Popover placement="bottom">
+            <PopoverTrigger>
+              <Avatar src={session.user.image} />
+            </PopoverTrigger>
+            <PopoverContent>
+              <form action={signOut}>
+                <Button type="submit">退出</Button>
+              </form>
+            </PopoverContent>
+          </Popover>
+        ) : (
+          <>
+            <NavbarItem>
+              <form action={signIn}>
+                <Button type="submit" color="primary" variant="flat">
+                  Sign In
+                </Button>
+              </form>
+            </NavbarItem>
+          </>
+        )}
       </NavbarContent>
     </Navbar>
   );
