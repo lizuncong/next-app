@@ -8,8 +8,11 @@ import { useSession } from 'next-auth/react';
 import { signOut as signOutClient } from 'next-auth/react';
 
 export default function HeaderAuth() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   console.log('session...', session);
+  if (status === 'loading') {
+    return 'loading...';
+  }
   const content = session?.user ? (
     <Popover placement="bottom">
       <PopoverTrigger>
@@ -18,10 +21,10 @@ export default function HeaderAuth() {
       <PopoverContent>
         {/* 调用server action的signout方法退出，貌似状态没有及时同步，但调用
         客户端的signtou就可以 */}
-        {/* <form action={signOut}>
-          <Button type="submit">退出</Button>
-        </form> */}
-        <Button onClick={() => signOutClient()}>退出</Button>
+        <form action={signOut}>
+          <Button type="submit">退出(状态没有及时刷新)</Button>
+        </form>
+        <Button onClick={() => signOutClient()}>退出(状态可以及时刷新)</Button>
       </PopoverContent>
     </Popover>
   ) : (
