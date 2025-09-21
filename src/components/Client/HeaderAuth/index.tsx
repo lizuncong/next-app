@@ -20,7 +20,7 @@ export default function HeaderAuth() {
       </PopoverTrigger>
       <PopoverContent>
         {/* 调用server action的signout方法退出，貌似状态没有及时同步，但调用
-        客户端的signtou就可以 */}
+        客户端的signtou就可以：https://github.com/better-auth/better-auth/issues/3608 */}
         <form action={signOut}>
           <Button type="submit">退出(状态没有及时刷新)</Button>
         </form>
