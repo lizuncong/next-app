@@ -21,5 +21,8 @@
   "i18n-ally.sourceLanguage": "en",
   "i18n-ally.annotationInPlace": false,
   "i18n-ally.extract.targetPickingStrategy": "most-similar",
-  "jest.jestCommandLine": "~/.nvm/nvm-exec npm test"
+  "jest.jestCommandLine": "~/.nvm/nvm-exec npm test",
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }
