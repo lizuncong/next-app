@@ -10,7 +10,7 @@ import {
 import { createTopic } from '@/src/actions/topic';
 import { startTransition, useActionState } from 'react';
 export default function CreateTopicForm() {
-  const [state, formAction] = useActionState(createTopic, {
+  const [state, formAction, isPending] = useActionState(createTopic, {
     errors: {},
   });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,7 +51,9 @@ export default function CreateTopicForm() {
               {state.errors._form.join(', ')}
             </span>
           ) : null}
-          <Button type="submit">Submit</Button>
+          <Button isLoading={isPending} type="submit">
+            Submit
+          </Button>
         </form>
       </PopoverContent>
     </Popover>

@@ -100,8 +100,8 @@ model Topic {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  User   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String?
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
 
   posts Post[]
 }
@@ -112,10 +112,10 @@ model Post {
   content   String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  User      User?     @relation(fields: [userId], references: [id])
-  userId    String?
-  Topic     Topic?    @relation(fields: [topicId], references: [id])
-  topicId   String?
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+  topic     Topic     @relation(fields: [topicId], references: [id])
+  topicId   String
   comments  Comment[]
 }
 
@@ -124,12 +124,12 @@ model Comment {
   content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    String?
-  Post      Post?    @relation(fields: [postId], references: [id])
-  postId    String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
 
-  parent   Comment?  @relation("Comments", fields: [parentId], references: [id], onDelete: Cascade)
-  parentId String?
+  parent   Comment   @relation("Comments", fields: [parentId], references: [id], onDelete: Cascade)
+  parentId String
   children Comment[] @relation("Comments")
 }
