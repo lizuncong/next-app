@@ -15,7 +15,7 @@ const createPostSchema = z.object({
   }),
 });
 
-interface CreatePostFormState {
+export interface CreatePostFormState {
   errors: {
     title?: string[];
     content?: string[];
@@ -86,5 +86,5 @@ export async function createPost(
       };
     }
   }
-  redirect(`/discuss/${topic.name}/posts/${post.id}`);
+  redirect(`/discuss/topics/${topic.name}/posts/${post.id}`);
 }
