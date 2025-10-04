@@ -1,6 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
 import { Input } from '@heroui/input';
 import HeaderAuth from '../../Client/HeaderAuth';
+import Link from 'next/link';
 export const AcmeLogo = () => {
   return (
     <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
@@ -18,8 +19,10 @@ export default async function Header() {
   return (
     <Navbar className="border-b-1 border-gray-200">
       <NavbarBrand>
-        <AcmeLogo />
-        <p className="font-bold text-inherit">DISCUSS</p>
+        <Link href="/discuss">
+          <AcmeLogo />
+          <p className="font-bold text-inherit">DISCUSS</p>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>

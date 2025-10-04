@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     // ppr: 'incremental',
   },
+  images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
+  },
   logging: {
     fetches: {
       fullUrl: true,

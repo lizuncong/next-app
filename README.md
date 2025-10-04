@@ -19,6 +19,7 @@
 - 2. npx prisma init --datasource-provider sqlite
 - 3. 编写模型 Schema
 - 4. 根据模型生成数据库表
+- 5.更新：npx prisma db push && npx prisma generate
 
 ```bash
 npx prisma db push
