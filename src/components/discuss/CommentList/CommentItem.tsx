@@ -1,10 +1,15 @@
-import { CommentWithUser } from '@/src/prisma/queries/comment';
+import {
+  CommentWithUser,
+  fetchCommentsByPostId,
+} from '@/src/prisma/queries/comment';
 import Image from 'next/image';
+import CreateCommentForm from '../../Client/CreateCommentForm';
 interface Props {
   comment: CommentWithUser;
 }
-export default function CommentItem(props: Props) {
+export default async function CommentItem(props: Props) {
   const { comment } = props;
+  const comments = await fetchCommentsByPostId(comment.postId);
   return (
     <div className="flex mb-3 gap-2 border border-gray-300 p-3 rounded-md">
       <Image
@@ -25,6 +30,12 @@ export default function CommentItem(props: Props) {
             </span>
           </span>
         </div>
+        <CreateCommentForm postId={comment.postId} parentId={comment.id} />
+        {comments
+          .filter(item => item.parentId === comment.id)
+          .map(item => {
+            return <CommentItem key={item.id} comment={item} />;
+          })}
       </div>
     </div>
   );

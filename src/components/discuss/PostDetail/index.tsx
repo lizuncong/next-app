@@ -13,7 +13,7 @@ export default async function PostDetail(props: Props) {
     notFound();
   }
   return (
-    <div className="flex pt-4 flex-col">
+    <div className="flex pt-4 flex-col mb-6">
       <h1 className="text-2xl font-bold mb-6">{post.title}</h1>
       <div>{post.content}</div>
     </div>

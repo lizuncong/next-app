@@ -11,7 +11,7 @@ export default async function PostShowPage(props: Props) {
   return (
     <div>
       <PostDetail postId={postId} />
-      <CreateCommentForm postId={postId} />
+      <CreateCommentForm isOpen={true} postId={postId} />
       <CommentList postId={postId} />
     </div>
   );

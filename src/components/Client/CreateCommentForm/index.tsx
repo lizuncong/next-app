@@ -1,11 +1,20 @@
 'use client';
 import { createComment } from '@/src/actions/comment';
-import { startTransition, useActionState, useEffect, useRef } from 'react';
+import {
+  startTransition,
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 interface Props {
   postId: string;
+  parentId?: string;
+  isOpen?: boolean;
 }
-export default function CreateCommentForm({ postId }: Props) {
-  const ceateCommentWrap = createComment.bind(null, { postId });
+export default function CreateCommentForm({ postId, parentId, isOpen }: Props) {
+  const ceateCommentWrap = createComment.bind(null, { postId, parentId });
+  const [formVisible, setFormVisible] = useState(isOpen);
   const [state, formAction, isPending] = useActionState(ceateCommentWrap, {
     errors: {},
   });
@@ -22,20 +31,30 @@ export default function CreateCommentForm({ postId }: Props) {
     }
   }, [state]);
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="flex flex-col gap-2 mt-6"
-      ref={formRef}
-    >
-      <textarea
-        className="border min-h-[100px] rounded-md border-gray-300 p-2"
-        name="content"
-        placeholder="输入评论"
-      />
-      <button type="submit" className="self-end">
-        发布评论
+    <>
+      <button
+        onClick={() => setFormVisible(!formVisible)}
+        className="text-blue-500 cursor-pointer my-3"
+      >
+        Reply
       </button>
-    </form>
+      {formVisible && (
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="flex flex-col gap-2"
+          ref={formRef}
+        >
+          <textarea
+            className="border min-h-[50px] rounded-md border-gray-300 p-2"
+            name="content"
+            placeholder="输入评论"
+          />
+          <button type="submit" className="self-end">
+            发布评论
+          </button>
+        </form>
+      )}
+    </>
   );
 }

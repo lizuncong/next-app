@@ -4,7 +4,8 @@ interface Props {
   postId: string;
 }
 export default async function CommentList({ postId }: Props) {
-  const comments = await fetchCommentsByPostId(postId);
+  let comments = await fetchCommentsByPostId(postId);
+  comments = comments.filter(item => !item.parentId);
   return (
     <div className="mt-6">
       <div className="mb-3">总共 20 条评论</div>
