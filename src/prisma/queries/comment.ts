@@ -9,6 +9,11 @@ export function fetchCommentsByPostId(
   postId: string
 ): Promise<CommentWithUser[]> {
   return prisma.comment.findMany({
+    orderBy: [
+      {
+        createdAt: 'desc',
+      },
+    ],
     where: {
       postId,
     },

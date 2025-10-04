@@ -3,6 +3,7 @@
 import { auth } from '@/auth';
 import { z } from 'zod';
 import { prisma } from '../db';
+import { revalidatePath } from 'next/cache';
 const createCommentSchema = z.object({
   content: z.string().min(3, {
     message: '不小于3个字符',
@@ -14,6 +15,7 @@ export interface CreateCommentFormState {
     content?: string[];
     _form?: string[];
   };
+  success?: boolean;
 }
 
 export async function createComment(
@@ -65,4 +67,18 @@ export async function createComment(
       };
     }
   }
+  const topic = await prisma.topic.findFirst({
+    where: {
+      posts: {
+        some: {
+          id: postId,
+        },
+      },
+    },
+  });
+  revalidatePath(`/discuss/${topic.name}/6666666666/posts/${postId}`);
+  return {
+    errors: {},
+    success: true,
+  };
 }
