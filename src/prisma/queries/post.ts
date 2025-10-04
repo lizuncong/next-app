@@ -71,3 +71,40 @@ export function fetchTopPosts(): Promise<PostWithData[]> {
     },
   });
 }
+
+export function fetchPostsBySearchKey(searchKey: string) {
+  return prisma.post.findMany({
+    where: {
+      OR: [
+        {
+          content: {
+            contains: searchKey,
+          },
+        },
+        {
+          title: {
+            contains: searchKey,
+          },
+        },
+      ],
+    },
+    include: {
+      user: {
+        select: {
+          name: true,
+          image: true,
+        },
+      },
+      topic: {
+        select: {
+          name: true,
+        },
+      },
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
+    },
+  });
+}

@@ -1,6 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
 import { Input } from '@heroui/input';
 import HeaderAuth from '../../Client/HeaderAuth';
+import SearchInput from './SearchInput';
 import Link from 'next/link';
 export const AcmeLogo = () => {
   return (
@@ -26,7 +27,7 @@ export default async function Header() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Input />
+          <SearchInput />
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
