@@ -2,6 +2,7 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
 import { Input } from '@heroui/input';
 import HeaderAuth from '../../Client/HeaderAuth';
 import SearchInput from './SearchInput';
+import ThemeSwitch from './ThemeSwitch';
 import Link from 'next/link';
 export const AcmeLogo = () => {
   return (
@@ -18,7 +19,7 @@ export const AcmeLogo = () => {
 
 export default async function Header() {
   return (
-    <Navbar className="border-b-1 border-gray-200">
+    <Navbar className="border-b-1 border-gray-200 dark:bg-black">
       <NavbarBrand>
         <Link href="/discuss">
           <AcmeLogo />
@@ -31,6 +32,7 @@ export default async function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
+        <ThemeSwitch />
         <HeaderAuth />
       </NavbarContent>
     </Navbar>

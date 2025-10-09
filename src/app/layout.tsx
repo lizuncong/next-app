@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import './global.dark.css';
+
 import React from 'react';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import HeProvider from './HeProvider';
@@ -20,7 +22,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
         className={`${inter.className} h-[100vh] overflow-auto bg-gray-100`}
       >

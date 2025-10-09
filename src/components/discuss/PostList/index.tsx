@@ -13,7 +13,7 @@ export default function PostList(prop: Props) {
           <Link
             key={post.id}
             href={`/discuss/topics/${post.topic.name}/posts/${post.id}`}
-            className="p-2 cursor-pointer flex items-center gap-3 border-1 border-default-200"
+            className="p-2 dark:border-purple-500 cursor-pointer flex items-center gap-3 border-1 border-default-200"
           >
             {post.user.image && (
               <img
